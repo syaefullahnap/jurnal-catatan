@@ -1,17 +1,22 @@
 ---
-layout: layouts/article.njk
-title: "Dermaga Jingga"
+title: Dermaga Jingga
 date: 2015-08-02
 category: perjalanan
 subcategory: travel-pulau
+location: ''
 excerpt: Menyusuri jalan ini, jalan yang telah mengukir jalan ceritanya sendiri, kau tahu ? meski hening menjadi saksi langkah ini tetap saja berjalan. Karena ia yakin suatu saat jalan itu akan menunjukkan...
-coverLabel: "Tulisan Lama"
-coverImage: "/assets/uploads/tumblr/tumblr-7-7.jpg"
-coverQuote: "Menyusuri jalan ini, jalan yang telah mengukir jalan"
-coverHeroQuote: "Menyusuri jalan ini, jalan yang telah mengukir jalan"
+coverLabel: Tulisan Lama
+coverQuote: Menyusuri jalan ini, jalan yang telah mengukir jalan
+coverHeroQuote: Menyusuri jalan ini, jalan yang telah mengukir jalan
 readingTime: 2
-tags: [Tumblr, Perjalanan, Arsip]
-tumblrUrl: "https://senjadisoreitu.tumblr.com/post/125666223219"
+featuredLabel: ''
+tags:
+  - Tumblr
+  - Perjalanan
+  - Arsip
+coverImage: /assets/uploads/tumblr/tumblr-7-7.jpg
+layout: layouts/article.njk
+tumblrUrl: https://senjadisoreitu.tumblr.com/post/125666223219
 ---
 
 > **Catatan:** Tulisan ini dipindahkan dari blog Tumblr lama [@senjadisoreitu](https://senjadisoreitu.tumblr.com/) — ditulis 2015-08-02.
@@ -20,11 +25,12 @@ tumblrUrl: "https://senjadisoreitu.tumblr.com/post/125666223219"
 
 Menyusuri jalan ini, jalan yang telah mengukir jalan
 ceritanya sendiri, kau tahu ? meski hening menjadi saksi langkah ini tetap saja
-berjalan. Karena ia yakin suatu saat jalan itu akan menunjukkan ujungnya,
+berjalan. 
+Karena ia yakin suatu saat jalan itu akan menunjukkan ujungnya,
 dimana tangan mungil mu sudah menunggu di atas perahu itu, yang telah tersandar
 peluh dan waktu pun tak pernah tahu, 
 
-Dalam perlahan… sendu angin menemani langkah kecil ini,
+Dalam perlahan… sendu angin menemani langkah kecil itu,
 sejenak kurebahkan raga lelah ini di dipan peraduan di sana, dan terfikir akan
 apakah mampu dalam membentangkan layar bahtera itu, terpejam mata ini tersadar
 riuk ombak bertalu di tepian dermaga jingga, teringat canda manis yang selalu
