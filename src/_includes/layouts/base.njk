@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ description or site.description }}" />
+  <title>{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }} — Catatan Perjalanan, Kehidupan & Tulisan Pribadi{% endif %}</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta property="og:description" content="{{ description or site.description }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{% if title %}{{ title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
+  <meta name="twitter:description" content="{{ description or site.description }}" />
+
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232a221a'/%3E%3Ctext x='50' y='62' font-family='Georgia,serif' font-size='52' font-weight='600' text-anchor='middle' fill='%23faf6ef' font-style='italic'%3EJ%3C/text%3E%3C/svg%3E" />
+
+  <!-- Edit in CMS -->
+  {% if editPath %}
+  <link rel="alternate" type="application/json" href="/admin/#/edit/{{ editPath }}" />
+  {% endif %}
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">J</span>
+        <span class="brand-name">Jurnal <em>&amp; Catatan</em></span>
+      </a>
+      <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <ul class="nav-links">
+        {% for item in site.nav %}
+        <li><a href="{{ item.url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Jurnal <em>&amp; Catatan</em></span>
+          <p>{{ site.description }}</p>
+        </div>
+        <div class="footer-col">
+          <h4>Jelajahi</h4>
+          <ul>
+            {% for item in site.nav %}
+            <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Arsip</h4>
+          <ul>
+            <li><a href="/jurnal-perjalanan/">2026</a></li>
+            <li><a href="/jurnal-perjalanan/">2025</a></li>
+            <li><a href="/jurnal-perjalanan/">2024</a></li>
+            <li><a href="/jurnal-perjalanan/">2023</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hubungi</h4>
+          <ul>
+            <li><a href="mailto:{{ site.social.email }}">{{ site.social.email }}</a></li>
+            <li><a href="{{ site.social.instagram }}">Instagram</a></li>
+            <li><a href="{{ site.social.twitter }}">Twitter</a></li>
+            <li><a href="/admin/">Edit (CMS)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© {% year %} {{ site.title }} — Ditulis dengan tangan.</p>
+        <div class="footer-socials">
+          <a href="{{ site.social.instagram }}" aria-label="Instagram">Ig</a>
+          <a href="{{ site.social.twitter }}" aria-label="Twitter">X</a>
+          <a href="mailto:{{ site.social.email }}" aria-label="Email">@</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

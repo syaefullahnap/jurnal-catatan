@@ -1,0 +1,115 @@
+# ============================================
+# Sveltia CMS Configuration
+# Jurnal & Catatan
+# ============================================
+# Setup instructions:
+# 1. Create a GitHub repo and push this project
+# 2. Update `backend.repo` below with `username/repo-name`
+# 3. Enable GitHub Pages or use Cloudflare Pages for hosting
+# 4. Visit /admin/ on your deployed site to log in with GitHub
+# ============================================
+
+backend:
+  name: github
+  # Repository GitHub untuk CMS & hosting:
+  repo: syaefullahnap/jurnal-catatan
+  branch: main
+  open_authoring: false
+  commit_messages:
+    create: 'tulis: {{collection}} "{{slug}}"'
+    update: 'sunting: {{collection}} "{{slug}}"'
+    delete: 'hapus: {{collection}} "{{slug}}"'
+    uploadMedia: 'unggah: {{path}}'
+    deleteMedia: 'hapus-media: {{path}}'
+
+# Optional: localize the CMS UI to Indonesian
+locale: id
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+publish_mode: editorial_workflow
+
+# ============================================
+# Collections
+# ============================================
+collections:
+
+  # ---------- JURNAL PERJALANAN ----------
+  - name: "perjalanan"
+    label: "Jurnal Perjalanan"
+    label_singular: "Catatan Perjalanan"
+    folder: "src/content/perjalanan"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{location}} · {{date | date('DD MMM YYYY')}}"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - label: "Semua"
+        field: category
+        pattern: "perjalanan"
+    fields:
+      - { label: "Judul (boleh pakai tag <em></em> untuk kata italic)", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Kategori", name: "category", widget: "hidden", default: "perjalanan" }
+      - { label: "Subkategori", name: "subcategory", widget: "select", options: ["travel-dalam", "travel-luar", "travel-pulau", "travel-kota"] }
+      - { label: "Lokasi", name: "location", widget: "string", required: false }
+      - { label: "Ringkasan (1-2 kalimat)", name: "excerpt", widget: "text", required: true }
+      - { label: "Label cover", name: "coverLabel", widget: "string", required: false, hint: "Contoh: Yogyakarta, NTT, dll." }
+      - { label: "Quote untuk cover (1 kalimat)", name: "coverQuote", widget: "text", required: true }
+      - { label: "Quote untuk hero (1 kalimat)", name: "coverHeroQuote", widget: "text", required: false }
+      - { label: "Waktu baca (menit)", name: "readingTime", widget: "number", default: 5, value_type: "int", min: 1, max: 60 }
+      - { label: "Label featured (opsional)", name: "featuredLabel", widget: "string", required: false }
+      - { label: "Tag", name: "tags", widget: "list", required: false, hint: "Tekan Enter setelah setiap tag" }
+      - { label: "Konten Tulisan (Markdown)", name: "body", widget: "markdown", hint: "Bisa pakai heading (##), bold (**), italic (*), quote (>), list (-), dll." }
+
+  # ---------- JURNAL KEHIDUPAN ----------
+  - name: "kehidupan"
+    label: "Jurnal Kehidupan"
+    label_singular: "Catatan Kehidupan"
+    folder: "src/content/kehidupan"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date | date('DD MMM YYYY')}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Kategori", name: "category", widget: "hidden", default: "kehidupan" }
+      - { label: "Subkategori", name: "subcategory", widget: "select", options: ["life-keluarga", "life-karier", "life-cinta", "life-refleksi"] }
+      - { label: "Lokasi (opsional)", name: "location", widget: "string", required: false }
+      - { label: "Ringkasan", name: "excerpt", widget: "text", required: true }
+      - { label: "Label cover", name: "coverLabel", widget: "string", required: false }
+      - { label: "Quote cover", name: "coverQuote", widget: "text", required: true }
+      - { label: "Quote hero", name: "coverHeroQuote", widget: "text", required: false }
+      - { label: "Waktu baca (menit)", name: "readingTime", widget: "number", default: 5, value_type: "int", min: 1, max: 60 }
+      - { label: "Label featured", name: "featuredLabel", widget: "string", required: false }
+      - { label: "Tag", name: "tags", widget: "list", required: false }
+      - { label: "Konten Tulisan (Markdown)", name: "body", widget: "markdown" }
+
+  # ---------- TULISAN PRIBADI ----------
+  - name: "pribadi"
+    label: "Tulisan Pribadi"
+    label_singular: "Tulisan"
+    folder: "src/content/pribadi"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date | date('DD MMM YYYY')}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Kategori", name: "category", widget: "hidden", default: "pribadi" }
+      - { label: "Subkategori", name: "subcategory", widget: "select", options: ["write-esai", "write-surat", "write-catatan", "write-puisi"] }
+      - { label: "Lokasi (opsional)", name: "location", widget: "string", required: false }
+      - { label: "Ringkasan", name: "excerpt", widget: "text", required: true }
+      - { label: "Label cover", name: "coverLabel", widget: "string", required: false }
+      - { label: "Quote cover", name: "coverQuote", widget: "text", required: true }
+      - { label: "Quote hero", name: "coverHeroQuote", widget: "text", required: false }
+      - { label: "Waktu baca (menit)", name: "readingTime", widget: "number", default: 5, value_type: "int", min: 1, max: 60 }
+      - { label: "Label featured", name: "featuredLabel", widget: "string", required: false }
+      - { label: "Tag", name: "tags", widget: "list", required: false }
+      - { label: "Konten Tulisan (Markdown)", name: "body", widget: "markdown" }

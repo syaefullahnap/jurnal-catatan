@@ -1,0 +1,171 @@
+---
+layout: layouts/base.njk
+title: false
+description: Jurnal — Kumpulan catatan perjalanan, jurnal kehidupan, dan tulisan pribadi.
+---
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <span class="eyebrow">Edisi XXIV — September 2026</span>
+        <h1>Halaman kosong yang <em>menunggu</em> untuk diisi.</h1>
+        <p class="lead">
+          Selamat datang di ruang sunyi antara keramaian dunia. Di sini saya menulis
+          tentang jalan yang sudah dilalui, hari-hari yang membentuk, dan kata-kata
+          yang diam-diam bermakna.
+        </p>
+        <div class="hero-cta">
+          <a href="/jurnal-perjalanan/" class="btn btn-primary btn-arrow">Mulai Membaca</a>
+          <a href="/tentang/" class="btn btn-ghost">Tentang Saya</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="num">{{ collections.posts.length }}</span>
+            <span class="lbl">Catatan Tertulis</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="num">{{ collections.perjalanan.length }}</span>
+            <span class="lbl">Tempat Dikunjungi</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="num">7</span>
+            <span class="lbl">Tahun Menulis</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-figure fade-up" aria-hidden="true">
+        <div class="hero-collage">
+          <div class="hero-collage-item hero-collage-item-1" style="background-image: url('/assets/uploads/hero-sunset-road.jpg');">
+            <span class="hero-collage-label">Jalan & Senja</span>
+          </div>
+          <div class="hero-collage-item hero-collage-item-2" style="background-image: url('/assets/uploads/hero-road.jpg');">
+            <span class="hero-collage-label">Petualangan</span>
+          </div>
+          <div class="hero-collage-item hero-collage-item-3" style="background-image: url('/assets/uploads/hero-ocean-sunset.jpg');">
+            <span class="hero-collage-label">Refleksi</span>
+          </div>
+        </div>
+        <div class="hero-collage-overlay"></div>
+        <div class="hero-collage-text">Sebuah halaman yang menunggu untuk diisi.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-inner">
+    <span>Jurnal Perjalanan</span><span>Refleksi Kehidupan</span><span>Tulisan Pribadi</span>
+    <span>Catatan Harian</span><span>Esai Pendek</span><span>Surat Untuk Diriku</span>
+    <span>Jurnal Perjalanan</span><span>Refleksi Kehidupan</span><span>Tulisan Pribadi</span>
+    <span>Catatan Harian</span><span>Esai Pendek</span><span>Surat Untuk Diriku</span>
+  </div>
+</div>
+
+<!-- ============ CATEGORIES ============ -->
+<section>
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <span class="eyebrow">Etalase</span>
+        <h2>Tiga ruang, satu <em>narasi</em>.</h2>
+      </div>
+      <a href="/tentang/" class="section-head-link">Kenali lebih jauh</a>
+    </div>
+
+    <div class="categories">
+      <a href="/jurnal-perjalanan/" class="category-tile fade-up">
+        <div class="category-tile-art travel" style="background-image: linear-gradient(rgba(74, 63, 51, 0.3), rgba(42, 34, 26, 0.45)), url('/assets/uploads/hero-road.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="category-tile-content">
+          <div class="category-tile-num">I.</div>
+          <h3>Jurnal Perjalanan</h3>
+          <p>Catatan dari tempat-tempat yang mengajarkan tentang pulang, tentang rindu, dan tentang bagaimana景色 mengubah cara kita melihat.</p>
+          <span class="tile-arrow">{{ collections.perjalanan.length }} Catatan →</span>
+        </div>
+      </a>
+
+      <a href="/jurnal-kehidupan/" class="category-tile fade-up">
+        <div class="category-tile-art life" style="background-image: linear-gradient(rgba(90, 45, 12, 0.3), rgba(42, 34, 26, 0.45)), url('/assets/uploads/hero-ocean-sunset.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="category-tile-content">
+          <div class="category-tile-num">II.</div>
+          <h3>Jurnal Kehidupan</h3>
+          <p>Refleksi harian tentang keluarga, karier, kehilangan, dan hal-hal kecil yang biasanya tidak masuk berita tapi mengubah segalanya.</p>
+          <span class="tile-arrow">{{ collections.kehidupan.length }} Catatan →</span>
+        </div>
+      </a>
+
+      <a href="/tulisan-pribadi/" class="category-tile fade-up">
+        <div class="category-tile-art writing" style="background-image: linear-gradient(rgba(58, 47, 71, 0.3), rgba(42, 34, 26, 0.45)), url('/assets/uploads/hero-books.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="category-tile-content">
+          <div class="category-tile-num">III.</div>
+          <h3>Tulisan Pribadi</h3>
+          <p>Esai, surat untuk diriku di masa depan, dan kata-kata yang ditulis tengah malam saat dunia sedang tidak melihat.</p>
+          <span class="tile-arrow">{{ collections.pribadi.length }} Tulisan →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% if collections.latestPosts.length %}
+<!-- ============ RECENT ENTRIES ============ -->
+<section>
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <span class="eyebrow">Dari Meja Kerja</span>
+        <h2>Yang <em>baru saja</em> ditulis.</h2>
+      </div>
+      <a href="/jurnal-perjalanan/" class="section-head-link">Semua catatan</a>
+    </div>
+
+    <div class="journal-grid">
+      {% for post in collections.latestPosts %}
+      <a href="{{ post.url }}" class="journal-card {{ post.data.category }} fade-up">
+        <div class="journal-card-cover" {% if post.data.coverImage %}style="background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.5)), url('{{ post.data.coverImage }}'); background-size: cover; background-position: center;"{% endif %}>
+          <span class="journal-card-cover-label">{{ post.data.coverLabel or categoryLabel(post.data.category) }}</span>
+          <div class="journal-card-cover-quote">"{{ post.data.coverQuote }}"</div>
+        </div>
+        <div class="journal-card-meta">
+          {% if post.data.location %}<span>{{ post.data.location }}</span>{% endif %}
+          {% if post.data.location %}<span class="dot"></span>{% endif %}
+          <span>{{ post.date | readableDate }}</span>
+        </div>
+        <h3>{{ post.data.title | safe }}</h3>
+        <p class="journal-card-excerpt">{{ post.data.excerpt }}</p>
+        <span class="journal-card-cta">Baca Catatan</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ QUOTE ============ -->
+<section style="padding: 80px 0;">
+  <div class="container-narrow">
+    <div class="quote-block fade-up">
+      <span class="quote-mark">"</span>
+      <blockquote>
+        Menulis adalah cara saya berbicara tanpa harus diterjemahkan.
+        Membaca adalah cara saya tidak merasa sendirian.
+      </blockquote>
+      <cite>— Catatan Pribadi, 2024</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="container-narrow fade-up">
+    <span class="eyebrow" style="color: var(--accent-soft);">Surat Bulanan</span>
+    <h2 style="margin-top: 14px;">Sesekali, saya menulis <em>surat</em>.</h2>
+    <p>Sekali sebulan. Tidak ada iklan. Hanya kata-kata, dan kadang satu foto yang tidak akan diposting di mana pun.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="alamat email kamu" required />
+      <button type="submit">Daftar</button>
+    </form>
+  </div>
+</section>

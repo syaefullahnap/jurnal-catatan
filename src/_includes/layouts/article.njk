@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+---
+
+<article>
+  <header class="article-head container-narrow">
+    <span class="eyebrow fade-up">{{ category | categoryLabel }} · {{ location or "Indonesia" }}</span>
+    <h1 class="fade-up">{{ title }}</h1>
+    {% if excerpt %}
+    <p class="lead fade-up" style="margin: 0 auto; max-width: 640px;">{{ excerpt }}</p>
+    {% endif %}
+    <div class="article-meta fade-up">
+      {% if location %}<span>📍 {{ location }}</span>{% endif %}
+      <span>🗓 {{ page.date | readableDate }}</span>
+      {% if readingTime %}<span>⏱ {{ readingTime }} menit baca</span>{% endif %}
+    </div>
+  </header>
+
+  {% if coverQuote %}
+  <div class="container-narrow">
+    <div class="article-hero {{ category }} fade-up">
+      <div class="article-hero-quote">{{ coverQuote }}</div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container-narrow">
+    <div class="article-body fade-up">
+      {{ content | safe }}
+
+      {% if tags %}
+      <div class="article-tags">
+        {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="article-footer">
+        <span class="signoff">— Ditulis dengan tangan, dari {{ location or "Jakarta" }}.</span>
+        <a href="{{ category | categoryUrl }}" class="btn btn-ghost btn-arrow">Kembali ke {{ category | categoryLabel }}</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% if related and related.length %}
+<section style="background: var(--bg-cream);">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <span class="eyebrow">Untuk Dilanjutkan</span>
+        <h2>Catatan lain yang <em>seirama</em>.</h2>
+      </div>
+      <a href="{{ category | categoryUrl }}" class="section-head-link">Semua catatan</a>
+    </div>
+    <div class="journal-grid">
+      {% for r in related | limit(3) %}
+      <a href="{{ r.url }}" class="journal-card {{ r.data.category }} fade-up">
+        <div class="journal-card-cover">
+          <span class="journal-card-cover-label">{{ categoryLabel(r.data.category) }}</span>
+          <div class="journal-card-cover-quote">"{{ r.data.excerpt }}"</div>
+        </div>
+        <div class="journal-card-meta">
+          {% if r.data.location %}<span>{{ r.data.location }}</span>{% endif %}
+          {% if r.data.location %}<span class="dot"></span>{% endif %}
+          <span>{{ r.date | readableDate }}</span>
+        </div>
+        <h3>{{ r.data.title | safe }}</h3>
+        <p class="journal-card-excerpt">{{ r.data.excerpt }}</p>
+        <span class="journal-card-cta">Baca Catatan</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

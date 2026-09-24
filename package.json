@@ -1,0 +1,22 @@
+{
+  "name": "jurnal-cms",
+  "version": "1.0.0",
+  "description": "Jurnal & Catatan - personal journal with Eleventy + Sveltia CMS",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "journal",
+    "blog",
+    "eleventy",
+    "sveltia-cms"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "luxon": "^3.7.2",
+    "markdown-it": "^14.1.0"
+  }
+}

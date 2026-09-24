@@ -1,0 +1,82 @@
+---
+layout: layouts/base.njk
+---
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container-narrow fade-up">
+    <span class="eyebrow">Etalase {{ categoryNumber }} — {{ categoryTitle }}</span>
+    <h1>{{ headerTitle | safe }}</h1>
+    <p class="lead">{{ headerLead }}</p>
+  </div>
+</header>
+
+{% if featured %}
+<!-- FEATURED ARTICLE -->
+<section style="padding-top: 60px; padding-bottom: 0;">
+  <div class="container">
+    <article class="featured fade-up">
+      <div class="featured-figure {{ category }}">
+        <div class="featured-figure-content">"{{ featured.data.coverQuote }}"</div>
+      </div>
+      <div class="featured-body">
+        <span class="eyebrow">{{ featured.data.featuredLabel or categoryTitle }}</span>
+        <h2>{{ featured.data.title | safe }}</h2>
+        {{ featuredTemplate | safe }}
+        <a href="{{ featured.url }}" class="btn btn-ghost btn-arrow" style="margin-top: 24px;">{{ featuredCTA or "Baca Catatan" }}</a>
+        <div class="featured-meta">
+          {% if featured.data.location %}<span>📍 {{ featured.data.location }}</span>{% endif %}
+          <span>🗓 {{ featured.date | readableDate }}</span>
+          {% if featured.data.readingTime %}<span>⏱ {{ featured.data.readingTime }} menit baca</span>{% endif %}
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+<!-- FILTER -->
+<section style="padding-top: 60px; padding-bottom: 0;">
+  <div class="container">
+    <div class="filter-tabs fade-up">
+      <button class="filter-tab active" data-filter="all">Semua</button>
+      {% for tab in filterTabs %}
+      <button class="filter-tab" data-filter="{{ tab.filter }}">{{ tab.label }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- LIST -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="journal-grid">
+      {% for post in collections[collectionName] | reverse %}
+      <a href="{{ post.url }}" class="journal-card {{ category }} fade-up" data-category="{{ post.data.subcategory or category }}">
+        <div class="journal-card-cover" {% if post.data.coverImage %}style="background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.5)), url('{{ post.data.coverImage }}'); background-size: cover; background-position: center;"{% endif %}>
+          <span class="journal-card-cover-label">{{ post.data.coverLabel or post.data.location or categoryTitle }}</span>
+          <div class="journal-card-cover-quote">"{{ post.data.coverQuote }}"</div>
+        </div>
+        <div class="journal-card-meta">
+          {% if post.data.location %}<span>📍 {{ post.data.location }}</span><span class="dot"></span>{% endif %}
+          <span>{{ post.date | readableDate }}</span>
+        </div>
+        <h3>{{ post.data.title | safe }}</h3>
+        <p class="journal-card-excerpt">{{ post.data.excerpt }}</p>
+        <span class="journal-card-cta">Baca Catatan</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section style="padding: 60px 0;">
+  <div class="container-narrow">
+    <div class="quote-block fade-up">
+      <span class="quote-mark">"</span>
+      <blockquote>{{ blockquoteText }}</blockquote>
+      <cite>— {{ blockquoteCite }}</cite>
+    </div>
+  </div>
+</section>
