@@ -2,19 +2,22 @@
 # Sveltia CMS Configuration
 # Jurnal & Catatan
 # ============================================
-# Setup instructions:
-# 1. Create a GitHub repo and push this project
-# 2. Update `backend.repo` below with `username/repo-name`
-# 3. Enable GitHub Pages or use Cloudflare Pages for hosting
-# 4. Visit /admin/ on your deployed site to log in with GitHub
+# Setup:
+# 1. Repository sudah ter-deploy di Cloudflare Pages
+# 2. OAuth Proxy tersedia di /api/oauth/callback (Pages Function)
+# 3. Env vars GITHUB_CLIENT_ID & GITHUB_CLIENT_SECRET di-set di Cloudflare
+# 4. Login di /admin/ dengan akun GitHub syaefullahnap
 # ============================================
 
 backend:
   name: github
-  # Repository GitHub untuk CMS & hosting:
   repo: syaefullahnap/jurnal-catatan
   branch: main
   open_authoring: false
+  base_url: https://jurnal-catatan.pages.dev
+  auth_endpoint: oauth
+  app_id: Ov23liEeDrcR7R4uXH73
+  proxy_url: https://jurnal-catatan.pages.dev/api/oauth/callback
   commit_messages:
     create: 'tulis: {{collection}} "{{slug}}"'
     update: 'sunting: {{collection}} "{{slug}}"'
@@ -22,12 +25,14 @@ backend:
     uploadMedia: 'unggah: {{path}}'
     deleteMedia: 'hapus-media: {{path}}'
 
-# Optional: localize the CMS UI to Indonesian
+# CMS UI dalam Bahasa Indonesia
 locale: id
 
+# Media upload configuration
 media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
 
+# Workflow: published langsung (untuk single-author blog)
 publish_mode: editorial_workflow
 
 # ============================================
