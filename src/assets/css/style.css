@@ -1550,3 +1550,124 @@ footer {
 
 /* ---------- Selection ---------- */
 ::selection { background: var(--accent); color: var(--bg-paper); }
+
+/* ============================================
+   404 PAGE
+   ============================================ */
+.not-found {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, var(--bg-paper) 0%, var(--bg-cream) 100%);
+}
+
+.container-narrow {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.not-found-figure {
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.big-404 {
+  display: block;
+  font-family: var(--serif);
+  font-size: 180px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  font-style: italic;
+  opacity: 0.18;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.not-found-eyebrow {
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 12px 0;
+}
+
+.not-found-title {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 20px 0;
+  line-height: 1.15;
+}
+
+.not-found-lede {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 0 36px 0;
+  font-style: italic;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-paper);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-mid);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-ghost:hover {
+  background: var(--accent);
+  color: var(--bg-paper);
+}
+
+@media (max-width: 640px) {
+  .big-404 { font-size: 120px; }
+  .not-found-title { font-size: 32px; }
+  .not-found-lede { font-size: 15px; }
+  .not-found-actions { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; justify-content: center; }
+}

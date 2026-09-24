@@ -24,6 +24,11 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(new Date(dateObj), { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
+  eleventyConfig.addFilter("dateToRfc3339", (dateObj) => {
+    if (!dateObj) return "";
+    return DateTime.fromJSDate(new Date(dateObj), { zone: "utc" }).toISO();
+  });
+
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
   eleventyConfig.addFilter("categoryLabel", (cat) => {
