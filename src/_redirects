@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# Sveltia CMS OAuth callback: GitHub redirects to /oauth?code=...
+# but Sveltia UI lives at /admin/. Redirect the OAuth callback URL
+# to /admin/ so Sveltia can extract the code from URL params.
+
+/oauth         /admin/         302
+/oauth/        /admin/         302

@@ -10,6 +10,8 @@ module.exports = function (eleventyConfig) {
   // ----- Pass-through copies -----
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
+  eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
 
   // ----- Filters -----
   eleventyConfig.addFilter("readableDate", (dateObj, format = "d MMMM yyyy", zone = "Asia/Jakarta") => {
